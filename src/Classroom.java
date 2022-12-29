@@ -65,6 +65,33 @@ public class Classroom {
         return this.averageMark;
     }
 
+    /*
+     * Returns the number of students that got a mark above the average mark
+     */
+    public int getStudentsAboveAverage() {
+        int ret = 0;
+
+        for (int i = 0; i < this.getStudents().length; i++) {
+            if (this.getStudents()[i].getMark() > this.getAverageMark()) {
+                ret++;
+            }
+        }
+        return ret;
+    }
+
+    /*
+     * Returns the number of students that got a mark above the average mark
+     */
+    public int getStudentsBelowAverage() {
+        int ret = 0;
+
+        for (int i = 0; i < this.getStudents().length; i++) {
+            if (this.getStudents()[i].getMark() < this.getAverageMark()) {
+                ret++;
+            }
+        }
+        return ret;
+    }
 
     /*
     Returns the highest mark for this classroom
@@ -145,7 +172,7 @@ public class Classroom {
             return ("B");
         } else if (mark >= 45 && mark <= 59) {
             return ("C");
-        } else if (mark >= 0 && mark <= 45) {
+        } else if (mark >= 0 && mark <= 44) {
             return ("F");
         } else {
             return ("U");
@@ -162,7 +189,7 @@ public class Classroom {
             return (1);
         } else if (mark >= 45 && mark <= 59) {
             return (2);
-        } else if (mark >= 0 && mark <= 45) {
+        } else if (mark >= 0 && mark <= 44) {
             return (3);
         } else {
             return (4);
@@ -170,9 +197,16 @@ public class Classroom {
     }
 
     /*
+    Returns an array index representing marks (0 - 9 == 0 ... 90 - 99 == 10 ... 100 == 11)
+    */
+    private int getMarksIndex(int mark) {
+        return ((int) mark/10);
+    }
+
+    /*
     Returns an Integer array with the number of students obtaining a mark by grade
+    Grades being considered are: A, B, C, F and U
      */
-    //Grades being considered are: A, B, C, F and U
     public int[] getStudentsByGrade() {
         int[] result = new int[] {0,0,0,0,0};
 
@@ -180,7 +214,23 @@ public class Classroom {
          * Loops through the students array for each grade and updates the appropriate value as needed
          */
         for (Student student : this.students) {
-            result[this.getGradesIndex(student.getGrade())]++;
+            result[getGradesIndex(student.getMark())]++;
+        }
+        return result;
+    }
+
+    /*
+    Returns an Integer array with the number of students obtaining a mark by grade
+    Grades being considered are: A, B, C, F and U
+     */
+    public int[] getStudentsByMark() {
+        int[] result = new int[] {0,0,0,0,0,0,0,0,0,0,0};
+
+        /*
+         * Loops through the students array for each grade and updates the appropriate value as needed
+         */
+        for (Student student : this.students) {
+            result[getMarksIndex(student.getMark())]++;
         }
         return result;
     }
@@ -192,9 +242,64 @@ public class Classroom {
         if (byGrade) {
             System.out.println();
             System.out.println("Displaying a histogram of Student Grades");
-
+            System.out.println("----------------------------------------");
+            int h[] = getStudentsByGrade();
+            String hString = "";
+            // Loop for the number of students (which is the maximum value that can exist for a single category)
+            for (int s = (students.length - 1); s >= 0; s--) {
+                // Loop through each category
+                hString = "";
+                for (int c = 0; c < h.length; c++) {
+                    if (h[c] >= (s + 1)) {
+                        if (hString.length() > 0) {
+                            hString = (hString + "  " + "*");
+                        } else {
+                            hString = "*";
+                        }
+                    } else {
+                        if (hString.length() > 0) {
+                            hString = (hString + "   ");
+                        } else {
+                            hString = " ";
+                        }
+                    }
+                }
+                if (hString.contains("*")) {
+                    System.out.println(hString);
+                }
+            }
+            System.out.println("A  B  C  F  U");
         } else {
             System.out.println();
+            System.out.println("Displaying a histogram of Student Marks");
+            System.out.println("---------------------------------------");
+            int h[] = getStudentsByMark();
+
+            String hString = "";
+            // Loop for the number of students (which is the maximum value that can exist for a single category)
+            for (int s = (students.length - 1); s >= 0; s--) {
+                // Loop through each category
+                hString = "  ";
+                for (int c = 0; c < h.length; c++) {
+                    if (h[c] >= (s + 1)) {
+                        if (hString.length() > 0) {
+                            hString = (hString + "*      ");
+                        } else {
+                            hString = "  *      ";
+                        }
+                    } else {
+                        if (hString.length() > 0) {
+                            hString = (hString + "       ");
+                        } else {
+                            hString = "   ";
+                        }
+                    }
+                }
+                if (hString.contains("*")) {
+                    System.out.println(hString);
+                }
+            }
+            System.out.println(" 0-9   10-19  20-29  30-39  40-49  50-59  60-69  70-79  80-89  90-99  100");
         }
     }
 

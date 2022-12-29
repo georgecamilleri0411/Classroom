@@ -73,51 +73,11 @@ public class Student {
             return ("B".charAt(0));
         } else if (mark >= 45 && mark <= 59) {
             return ("C".charAt(0));
-        } else if (mark >= 0 && mark <= 45) {
+        } else if (mark >= 0 && mark <= 44) {
             return ("F".charAt(0));
         } else {
             return ("U".charAt(0));
         }
     }
-
-/*
-    //Histogram (not finished)
-    public void drawHist()
-    {
-        for (int [] mark = new int[mark] {
-
-        if(mark[i]<= 0 && mark[i] >= 9)
-            hist[0] += 1;
-
-        if(mark[i]<= 10 && mark[i] >= 19)
-            hist[1] += 1;
-
-        if(mark[i]<= 20 && mark[i] >= 29)
-            hist[2] += 1;
-
-        if(mark[i]<= 30 && mark[i] >= 39)
-            hist[3] += 1;
-
-        if(mark[i]<= 40 && mark[i] >= 49)
-            hist[4] += 1;
-
-        if(mark[i]<= 50 && mark[i] >= 59)
-            hist[5] += 1;
-
-        if(mark[i]<= 60 && mark[i] >= 69)
-            hist[6] += 1;
-
-        if(mark[i]<= 70 && mark[i] >= 79)
-            hist[7] += 1;
-
-        if(mark[i]<= 80 && mark[i] >= 89)
-            hist[8] += 1;
-
-        if(mark[i]<= 90 && mark[i] >= 99)
-            hist[9] += 1;
-
-}
-    }
- */
 
 }
