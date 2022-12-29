@@ -34,14 +34,16 @@ public class Main {
                  * Display the menu
                  */
                 System.out.println("MENU");
-                System.out.println();
+                System.out.println("==============================================================");
                 System.out.println("1......Enter Students List of Names and Marks");
-
                 System.out.println("2......Display Students Details");
                 System.out.println("3......Display Total and Average Mark, Highest and Lowest Mark");
                 System.out.println("4......Display First in Class");
                 System.out.println("5......Search for a particular student.");
-                System.out.println("6......Exit");
+                System.out.println("6.......Display a Histogram of student marks");
+                System.out.println("7.......Display a Histogram of student grades");
+                System.out.println("--------------------------------------------------------------");
+                System.out.println("0......Exit");
                 System.out.println("Enter your choice: ");
                 System.out.println();
                 choice = Keyboard.readInt();
@@ -83,7 +85,7 @@ public class Main {
 
                     case 3: // Display the total mark (sum of all marks), average mark, highest mark and lowest mark
 
-                        System.out.println("You have chosen '3......Display Total and Average Mark, Highest and Lowest Mark'.");
+                        System.out.println("You have chosen '3......Display Total and Average, Highest, Lowest, Above and Below Average Mark'.");
 
                         System.out.println();
                         System.out.println(myClassroom.getTotalMark() + "\t" + myClassroom.getAverageMark()
@@ -110,8 +112,30 @@ public class Main {
 
                         break;
 
+                    case 6: // Display the histogram
+                        System.out.println("You have chosen '6.......Display a Histogram of student marks'.");
+                        myClassroom.printHistogram(false);
+                        break;
+
+                    case 7: // Display the histogram
+                        System.out.println("You have chosen '7.......Display a Histogram of student grades'.");
+                        myClassroom.printHistogram(true);
+                        break;
+
+                    case 99: // Hidden feature - generate dummy data for testing
+                        System.out.println("You have chosen '99......Generate dummy data'.");
+                        System.out.println();
+                        System.out.print("Generating data for " + students.length + " students ...");
+                        for (int s = 0; s < students.length; s++) {
+                            students[s] = new Student(("Student " + s), (int) ((Math.random() * (100 - 1)) + 1));
+                        }
+                        myClassroom.assignStudents(students);
+                        System.out.println("Dummy data has been generated.");
+
+                        break;
+
                 }
-            } while (choice != 6);
+            } while (choice != 0);
         }
         else {
             System.out.println("Access denied");

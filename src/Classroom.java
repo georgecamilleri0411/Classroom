@@ -135,5 +135,68 @@ public class Classroom {
         return myStudent;
     }
 
+    /*
+    Returns a grade, based on the mark specified
+     */
+    public String getGrades(int mark) {
+        if (mark >= 80 && mark <= 100) {
+            return ("A");
+        } else if (mark >= 60 && mark <= 79) {
+            return ("B");
+        } else if (mark >= 45 && mark <= 59) {
+            return ("C");
+        } else if (mark >= 0 && mark <= 45) {
+            return ("F");
+        } else {
+            return ("U");
+        }
+    }
+
+    /*
+    Returns an array index representing grades (A == 0 ... U == 4), based on the mark specified
+    */
+    private int getGradesIndex(int mark) {
+        if (mark >= 80 && mark <= 100) {
+            return (0);
+        } else if (mark >= 60 && mark <= 79) {
+            return (1);
+        } else if (mark >= 45 && mark <= 59) {
+            return (2);
+        } else if (mark >= 0 && mark <= 45) {
+            return (3);
+        } else {
+            return (4);
+        }
+    }
+
+    /*
+    Returns an Integer array with the number of students obtaining a mark by grade
+     */
+    //Grades being considered are: A, B, C, F and U
+    public int[] getStudentsByGrade() {
+        int[] result = new int[] {0,0,0,0,0};
+
+        /*
+         * Loops through the students array for each grade and updates the appropriate value as needed
+         */
+        for (Student student : this.students) {
+            result[this.getGradesIndex(student.getGrade())]++;
+        }
+        return result;
+    }
+
+    /*
+     * Outputs a histogram based on the grades or marks obtained by the students
+     */
+    public void printHistogram(boolean byGrade) {
+        if (byGrade) {
+            System.out.println();
+            System.out.println("Displaying a histogram of Student Grades");
+
+        } else {
+            System.out.println();
+        }
+    }
+
 }
 
