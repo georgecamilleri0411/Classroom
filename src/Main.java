@@ -35,15 +35,15 @@ public class Main {
                 System.out.println("=============================================================================================");
                 System.out.println("MENU");
                 System.out.println("=============================================================================================");
-                System.out.println("1......Enter Students List of Names and Marks");
-                System.out.println("2......Display Students Details");
-                System.out.println("3......Display Total, Average, Highest and Lowest Marks, Student above and below average mark");
-                System.out.println("4......Display First in Class");
-                System.out.println("5......Search for a particular student.");
-                System.out.println("6.......Display a Histogram of student marks");
-                System.out.println("7.......Display a Histogram of student grades");
+                System.out.println("1 - Enter Students List of Names and Marks");
+                System.out.println("2 - Display Students Details");
+                System.out.println("3 - Display Total, Average, Highest and Lowest Marks, Student above and below average mark");
+                System.out.println("4 - Display First in Class");
+                System.out.println("5 - Search for a particular student.");
+                System.out.println("6 - Display a Histogram of student marks");
+                System.out.println("7 - Display a Histogram of student grades");
                 System.out.println("---------------------------------------------------------------------------------------------");
-                System.out.println("0......Exit");
+                System.out.println("0 - Exit");
                 System.out.println("=============================================================================================");
                 System.out.println("Enter your choice: ");
                 System.out.println();
@@ -51,7 +51,7 @@ public class Main {
 
                 switch (choice) {
                     case 1: // Option 1: input the student names and marks.
-                        System.out.println("You have chosen '1......Enter Students List of Names and Marks'.");
+                        System.out.println("You have chosen '1 - Enter Students List of Names and Marks'.");
                         // Loop for the number of students in this classroom and store them in an array
                         for (int i = 0 ; i < nos ; i++){
                             System.out.println();
@@ -76,7 +76,7 @@ public class Main {
 
                         System.out.println();
                         if (myClassroom.getStudents() != null) {
-                            System.out.println("You have chosen '2......Display Students Details'.");
+                            System.out.println("You have chosen '2 - Display Students Details'.");
                             System.out.println();
                             // UPDATED
                             System.out.println (("Student Name" + padStr).substring(0, maxStudentNameLength) + "\tMark\tGrade");
@@ -99,7 +99,7 @@ public class Main {
                     case 3: // Display the total (sum), average, highest, lowest, # students above and below average mark
 
                         if (myClassroom.getStudents() != null) {
-                            System.out.println("You have chosen '3......Display Total, Average, Highest and Lowest Marks, Student above and below average mark'.");
+                            System.out.println("You have chosen '3 - Display Total, Average, Highest and Lowest Marks, Student above and below average mark'.");
                             System.out.println();
                             System.out.println("Total Mark   : " + myClassroom.getTotalMark());
                             System.out.println("Average Mark : " + myClassroom.getAverageMark());
@@ -117,7 +117,7 @@ public class Main {
 
                     case 4: // Display the student with the highest mark
                         if (myClassroom.getStudents() != null) {
-                            System.out.println("You have chosen '4......Display First in Class'.");
+                            System.out.println("You have chosen '4 - Display First in Class'.");
                             System.out.println();
                             System.out.println("First in class: " + myClassroom.getFirstInClass());
                             System.out.println();
@@ -130,7 +130,7 @@ public class Main {
 
                     case 5: // Display the search results, according to the value input by the user
                         if (myClassroom.getStudents() != null) {
-                            System.out.println("You have chosen '5......Search for a particular student.'.");
+                            System.out.println("You have chosen '5 - Search for a particular student.'.");
                             System.out.println();
                             System.out.println("Enter student name: ");
                             String queryStudent = Keyboard.readString();
@@ -149,20 +149,31 @@ public class Main {
 
                         break;
 
-                    case 6: // Display the histogram
-                        System.out.println("You have chosen '6.......Display a Histogram of student marks'.");
-                        myClassroom.printHistogram(false);
+                    case 6: // Display the histogram based on student marks
+                        if (myClassroom.getStudents() != null) {
+                            System.out.println("You have chosen '6 - Display a Histogram of student marks'.");
+                            myClassroom.printHistogram(false);
+                        } else {
+                            System.out.println ("Please input some students first.");
+                            System.out.println();
+                        }
+
                         break;
 
                     case 7: // Display the histogram
-                        System.out.println("You have chosen '7.......Display a Histogram of student grades'.");
-                        myClassroom.printHistogram(true);
+                        if (myClassroom.getStudents() != null) {
+                            System.out.println("You have chosen '7 - Display a Histogram of student grades'.");
+                            myClassroom.printHistogram(true);
+                        } else {
+                            System.out.println ("Please input some students first.");
+                            System.out.println();
+                        }
                         break;
 
-                    case 99: // Hidden feature - generate dummy data for testing
-                        System.out.println("You have chosen '99......Generate dummy data'.");
+                    case 99: // Secret (special) feature - generate dummy data for testing
+                        System.out.println("You have unlocked a secret feature '99 - Generate dummy data'.");
                         System.out.println();
-                        System.out.print("Generating data for " + students.length + " students ...");
+                        System.out.print("Generating data for " + students.length + " students ... ");
                         for (int s = 0; s < students.length; s++) {
                             students[s] = new Student(("Student " + s), (int) ((Math.random() * (100 - 1)) + 1));
                         }

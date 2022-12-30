@@ -2,6 +2,8 @@
 * Classroom class comprises of an array of Student objects and the fields to store the statistical details required
  */
 
+import java.util.Arrays;
+
 public class Classroom {
 
     private Student[] students;
@@ -172,7 +174,7 @@ public class Classroom {
             return ("B");
         } else if (mark >= 45 && mark <= 59) {
             return ("C");
-        } else if (mark >= 0 && mark <= 44) {
+        } else if (mark >= 20 && mark <= 44) {
             return ("F");
         } else {
             return ("U");
@@ -189,7 +191,7 @@ public class Classroom {
             return (1);
         } else if (mark >= 45 && mark <= 59) {
             return (2);
-        } else if (mark >= 0 && mark <= 44) {
+        } else if (mark >= 20 && mark <= 44) {
             return (3);
         } else {
             return (4);
@@ -252,9 +254,9 @@ public class Classroom {
                 for (int c = 0; c < h.length; c++) {
                     if (h[c] >= (s + 1)) {
                         if (hString.length() > 0) {
-                            hString = (hString + "  " + "*");
+                            hString = (hString + "  " + "|");
                         } else {
-                            hString = "*";
+                            hString = "|";
                         }
                     } else {
                         if (hString.length() > 0) {
@@ -264,7 +266,7 @@ public class Classroom {
                         }
                     }
                 }
-                if (hString.contains("*")) {
+                if (hString.contains("|")) {
                     System.out.println(hString);
                 }
             }
@@ -283,9 +285,9 @@ public class Classroom {
                 for (int c = 0; c < h.length; c++) {
                     if (h[c] >= (s + 1)) {
                         if (hString.length() > 0) {
-                            hString = (hString + "*      ");
+                            hString = (hString + "|      ");
                         } else {
-                            hString = "  *      ";
+                            hString = "  |      ";
                         }
                     } else {
                         if (hString.length() > 0) {
@@ -295,7 +297,7 @@ public class Classroom {
                         }
                     }
                 }
-                if (hString.contains("*")) {
+                if (hString.contains("|")) {
                     System.out.println(hString);
                 }
             }

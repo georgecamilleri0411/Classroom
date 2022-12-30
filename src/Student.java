@@ -73,7 +73,7 @@ public class Student {
             return ("B".charAt(0));
         } else if (mark >= 45 && mark <= 59) {
             return ("C".charAt(0));
-        } else if (mark >= 0 && mark <= 44) {
+        } else if (mark >= 20 && mark <= 44) {
             return ("F".charAt(0));
         } else {
             return ("U".charAt(0));
