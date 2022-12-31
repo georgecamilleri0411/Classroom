@@ -1,26 +1,27 @@
 /*
- * Main class. The program starts running from here (using the main method)
+ * StudentMarks class. The program starts running from here (using the main method)
  */
-public class Main {
+public class StudentMarks {
 
     static Classroom myClassroom = new Classroom();
 
     public static void main(String[]args) {
 
         int choice;
-        final int password=23456;
-        int nos = 31;
+        final int password = 23456;
         final int maxStudentNameLength = 30;
         String padStr = "";
         for (int s = 0; s < maxStudentNameLength; s++) {
             padStr += " ";
         }
         System.out.println ("Welcome to the Student Marks program.");
-        System.out.println("Enter password");
-        int password2= Keyboard.readInt();
-        if (password2 == password) {
-            System.out.println("access granted");
+        System.out.println("Enter password:");
+        int inputPassword = 0;
+        inputPassword = Keyboard.readInt();
+        if (inputPassword == password) {
+            System.out.println("Access granted");
             System.out.println("How many students do you have in your class? (Maximum 30)");
+            int nos = 31;
             while (nos <= 0 || nos > 30) {
                 nos = Keyboard.readInt();
             }

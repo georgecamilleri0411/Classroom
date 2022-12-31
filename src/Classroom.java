@@ -1,5 +1,8 @@
 /*
-* Classroom class comprises of an array of Student objects and the fields to store the statistical details required
+* Classroom class comprises of an array of Student objects and the fields to store the statistical details required.
+* It is meant to be used in a static context, and exposes methods used in the Classroom package such as
+* getAverageMark, getHighestMark, etc. It also exposes methods to produce a visual display of the distribution of
+* marks as a Histogram, either based on grades obtained or on the actual marks gained, arranged in groups of 10 marks.
  */
 
 import java.util.Arrays;
