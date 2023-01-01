@@ -39,7 +39,6 @@ public class Student {
     public void setMark(int _mark) {
         this.mark = _mark;
         this.grade = setGrades(this.mark);
-
     }
 
     /*

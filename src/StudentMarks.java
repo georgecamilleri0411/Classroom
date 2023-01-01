@@ -104,8 +104,8 @@ public class StudentMarks {
                             System.out.println();
                             System.out.println("Total Mark   : " + myClassroom.getTotalMark());
                             System.out.println("Average Mark : " + myClassroom.getAverageMark());
-                            System.out.println("Highest Mark : " + myClassroom.getHighestMark());
-                            System.out.println("Lowest Mark  : " + myClassroom.getLowestMark());
+                            System.out.println("Highest Mark : " + myClassroom.getHighestMark().getMark());
+                            System.out.println("Lowest Mark  : " + myClassroom.getLowestMark().getMark());
                             System.out.println("Above Average: " + myClassroom.getStudentsAboveAverage());
                             System.out.println("Below Average: " + myClassroom.getStudentsBelowAverage());
                             System.out.println();
@@ -169,6 +169,7 @@ public class StudentMarks {
                             System.out.println ("Please input some students first.");
                             System.out.println();
                         }
+
                         break;
 
                     case 99: // Secret (special) feature - generate dummy data for testing

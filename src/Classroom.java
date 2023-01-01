@@ -5,15 +5,13 @@
 * marks as a Histogram, either based on grades obtained or on the actual marks gained, arranged in groups of 10 marks.
  */
 
-import java.util.Arrays;
-
 public class Classroom {
 
     private Student[] students;
     private int totalMark;
     private double averageMark;
-    private int highestMark;
-    private int lowestMark;
+    private Student highestMark;
+    private Student lowestMark;
     private String firstInClass;
 
     /*
@@ -99,34 +97,34 @@ public class Classroom {
     }
 
     /*
-    Returns the highest mark for this classroom
+    Returns student with the highest mark for this classroom
      */
-    public int getHighestMark() {
-        this.highestMark = 0;
+    public Student getHighestMark() {
+        this.highestMark = new Student("", 0);
 
         /*
-         * Loops through the students array and stores and returns the highest mark found
+         * Loops through the students array and stores and returns student with the highest mark found
          */
         for (int i = 0; i < this.students.length; i++) {
-            if (this.students[i].getMark() > this.highestMark) {
-                this.highestMark = this.students[i].getMark();
+            if (this.students[i].getMark() > this.highestMark.getMark()) {
+                this.highestMark = this.students[i];
             }
         }
         return this.highestMark;
     }
 
     /*
-     * Returns the lowest mark for this classroom
+     * Returns student with the lowest mark for this classroom
      */
-    public int getLowestMark() {
-        this.lowestMark = 100;
+    public Student getLowestMark() {
+        this.lowestMark = new Student("", 101);
 
         /*
-         * Loops through the students array and stores and returns the lowest mark found
+         * Loops through the students array and stores and returns student with the lowest mark found
          */
         for (int i = 0; i < this.students.length; i++) {
-            if (this.students[i].getMark() < this.lowestMark) {
-                this.lowestMark = this.students[i].getMark();
+            if (this.students[i].getMark() < this.lowestMark.getMark()) {
+                this.lowestMark = this.students[i];
             }
         }
         return this.lowestMark;
@@ -136,18 +134,7 @@ public class Classroom {
      * Returns the name of the first student that has obtained the highest mark
      */
     public String getFirstInClass() {
-        this.firstInClass = "";
-        int highestMark= 0;
-        /*
-         * Loops through the students array and stores and returns the name of the student with the highest mark
-         */
-        for (int i = 0; i < this.students.length; i++) {
-            if (this.students[i].getMark() > highestMark) {
-                highestMark = this.students[i].getMark();
-                this.firstInClass = this.students[i].getName();
-            }
-        }
-        return this.firstInClass;
+        return this.getHighestMark().getName();
     }
 
     /*
@@ -155,7 +142,6 @@ public class Classroom {
      */
     public Student searchStudent(String studentName) {
         Student myStudent = new Student("Not Found", 0);
-        int highestMark= 0;
         /*
          * Loops through the student array and, if their name matches the argument passed, the object is stored and returned
          */
@@ -212,7 +198,7 @@ public class Classroom {
     Returns an Integer array with the number of students obtaining a mark by grade
     Grades being considered are: A, B, C, F and U
      */
-    public int[] getStudentsByGrade() {
+    private int[] getStudentsByGrade() {
         int[] result = new int[] {0,0,0,0,0};
 
         /*
@@ -228,7 +214,7 @@ public class Classroom {
     Returns an Integer array with the number of students obtaining a mark by grade
     Grades being considered are: A, B, C, F and U
      */
-    public int[] getStudentsByMark() {
+    private int[] getStudentsByMark() {
         int[] result = new int[] {0,0,0,0,0,0,0,0,0,0,0};
 
         /*
